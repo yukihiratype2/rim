@@ -24,7 +24,9 @@ module.exports = {
   rules: {
     'react/react-in-jsx-scope': 'off',
     'react/jsx-filename-extension': [1, { extensions: ['.tsx'] }],
-        'react/jsx-props-no-spreading': 'off'
+    'react/jsx-props-no-spreading': 'off',
+    'class-methods-use-this': 'off',
+    'max-classes-per-file': 'off'
   },
   overrides: [
     {

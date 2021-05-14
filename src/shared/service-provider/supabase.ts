@@ -1,0 +1,7 @@
+import { createClient } from '@supabase/supabase-js';
+import SupaBaseAuthStore from '../../modules/auth/store/superbase-store';
+
+export const supabase = createClient('https://pnuelvfmwqqrushfblhp.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTYyMDk4MTIyMywiZXhwIjoxOTM2NTU3MjIzfQ.e4p6kd7O2aS9dA_A9rFcz58-zl0Bg6bV02l2W7duD9Q');
+
+// export default supabase;
+export const supaBaseAuthStore = new SupaBaseAuthStore(supabase);
