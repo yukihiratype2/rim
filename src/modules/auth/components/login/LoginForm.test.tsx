@@ -19,7 +19,7 @@ describe('LoginForm', () => {
     render(<LoginForm onLogin={login} />);
     const submitButton = screen.getByText('Login');
     fireEvent.change(screen.getByPlaceholderText('Username'), { target: { value: '23' } });
-    fireEvent.change(screen.getByPlaceholderText('Password'), { target: { value: '23' } });
+    fireEvent.change(screen.getByPlaceholderText('Password'), { target: { value: 'longpassword' } });
     fireEvent.click(submitButton);
     await waitFor(() => expect(login.mock.calls.length).toBe(1));
   });

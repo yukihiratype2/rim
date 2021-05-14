@@ -1,34 +1,35 @@
 import * as Yup from 'yup';
-import { Button, TextField } from '@material-ui/core';
-import { useFormik } from 'formik';
+import { Button } from '@material-ui/core';
+import { Form, Formik } from 'formik';
 import { AuthParams } from '../../store/api';
-
-// import { observer } from 'mobx-react-lite';
-// import { authStore } from '../../store';
+import Input from '../../../../components/common/Input';
 
 type Props = {
   onSignUp: (data: AuthParams) => any
 };
 
-const validationSchema: Yup.SchemaOf<AuthParams> = Yup.object().shape({
+type SignupParams = AuthParams & {
+  confirmPassword: string
+};
+
+const validationSchema: Yup.SchemaOf<SignupParams> = Yup.object().shape({
   username: Yup.string().required('Please enter your usename'),
-  password: Yup.string().required('Please enter your password'),
+  password: Yup.string().min(8, 'Password too short').required('Please enter your password'),
+  confirmPassword: Yup.string().oneOf([Yup.ref('password'), null], 'Password doesn\'t match').required('Please confirm your password'),
 });
 
-const SignupForm = ({ onSignUp }: Props) => {
-  const form = useFormik<AuthParams>({
-    initialValues: { username: '', password: '' },
-    onSubmit: onSignUp,
-    validationSchema,
-  });
-  return (
-    <form onSubmit={form.handleSubmit}>
-      <TextField variant="outlined" name="username" value={form.values.username} onChange={form.handleChange} placeholder="Username" error={form.touched.username && Boolean(form.errors.username)} helperText={form.touched.username && form.errors.username} />
-      <TextField variant="outlined" name="password" value={form.values.password} onChange={form.handleChange} placeholder="Password" type="password" />
+const INITIAL_VALUES: SignupParams = { username: '', password: '', confirmPassword: '' };
+
+const SignupForm = ({ onSignUp }: Props) => (
+  <Formik initialValues={INITIAL_VALUES} onSubmit={onSignUp} validationSchema={validationSchema}>
+    <Form>
+      <Input name="username" placeholder="Username" />
+      <Input name="password" placeholder="Password" type="password" />
+      <Input name="confirmPassword" placeholder="Confirm Password" type="password" />
       <Button type="submit">Sign Up</Button>
-    </form>
-  );
-};
+    </Form>
+  </Formik>
+);
 
 export default SignupForm;
 

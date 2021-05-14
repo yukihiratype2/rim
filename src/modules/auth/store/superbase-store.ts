@@ -28,7 +28,7 @@ export default class SupaBaseAuthStore implements AuthStore {
     return this.supabase.auth.signOut();
   }
 
-  async signup(data: AuthParams) {
+  signup = async (data: AuthParams) => {
     const result = await this.supabase.auth.signUp({
       email: data.username,
       password: data.password,
@@ -37,7 +37,7 @@ export default class SupaBaseAuthStore implements AuthStore {
       this.isLoggedIn = !!result.session;
     });
     return result;
-  }
+  };
 
   constructor(supabase:SupabaseClient) {
     makeObservable(this, {

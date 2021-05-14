@@ -13,6 +13,9 @@ type Props = {
 const AppRouter = ({ isLoggedIn }: Props) => (
   <Router>
     <Switch>
+      <Route exact path="/">
+        {isLoggedIn ? <Redirect to="/app" /> : <Redirect to="/auth" />}
+      </Route>
       <Route path="/auth">
         {isLoggedIn ? <Redirect to="/app" /> : <AuthView />}
       </Route>
