@@ -2,10 +2,10 @@ import { SupabaseClient } from '@supabase/supabase-js';
 import {
   action, makeObservable, observable, runInAction,
 } from 'mobx';
-import { AuthStore } from '.';
+import { AuthAdapter } from '.';
 import { AuthParams } from './api';
 
-export default class SupaBaseAuthStore implements AuthStore {
+export default class SupaBaseAuthStore implements  {
   supabase: SupabaseClient;
 
   isLoggedIn = false;

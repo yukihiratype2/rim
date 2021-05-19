@@ -26,7 +26,9 @@ module.exports = {
     'react/jsx-filename-extension': [1, { extensions: ['.tsx'] }],
     'react/jsx-props-no-spreading': 'off',
     'class-methods-use-this': 'off',
-    'max-classes-per-file': 'off'
+    'max-classes-per-file': 'off',
+    'no-underscore-dangle': 'off',
+    'no-console': process.env.NODE_ENV === 'production' ? 'error': 'off'
   },
   overrides: [
     {

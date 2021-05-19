@@ -1,8 +1,8 @@
 import * as Yup from 'yup';
 import { Button } from '@material-ui/core';
 import { Form, Formik } from 'formik';
-import { AuthParams } from '../../store/api';
 import Input from '../../../../components/common/Input';
+import { AuthParams } from '../../store/adapter';
 
 // import { observer } from 'mobx-react-lite';
 // import { authStore } from '../../store';

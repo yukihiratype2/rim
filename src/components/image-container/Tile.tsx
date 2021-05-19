@@ -1,4 +1,4 @@
-import ImageAsset from '../../service/asset/image-asset';
+import ImageAsset from '../../shared/types/asset/image-asset';
 import Image from './Image';
 
 export type TileProp = {

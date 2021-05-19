@@ -1,9 +1,5 @@
 import request from '../../../shared/utils/request';
-
-export type AuthParams = {
-  username: string;
-  password: string;
-};
+import { AuthParams } from './adapter';
 
 export const auth = async (data: AuthParams) => request.post('/auth/login', data);
 

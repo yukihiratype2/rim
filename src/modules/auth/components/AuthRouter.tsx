@@ -3,13 +3,15 @@ import { observer } from 'mobx-react-lite';
 import {
   BrowserRouter as Router, Redirect, Route, Switch, useRouteMatch,
 } from 'react-router-dom';
-import { supaBaseAuthStore } from '../../../shared/service-provider/supabase';
+// import { firebaseAuthStore } from '../../../shared/service-provider/firebase';
+import { authStore } from '../store';
+// import { supaBaseAuthStore } from '../../../shared/service-provider/supabase';
 import LoginForm from './login/LoginForm';
 import SignUpForm from './sign-up/SignUpForm';
 
-const LoginFormWithStore = observer(() => <LoginForm onLogin={supaBaseAuthStore.login} />);
+const LoginFormWithStore = observer(() => <LoginForm onLogin={authStore.login} />);
 
-const SignUpFormWithStore = observer(() => <SignUpForm onSignUp={supaBaseAuthStore.signup} />);
+const SignUpFormWithStore = observer(() => <SignUpForm onSignUp={authStore.signup} />);
 
 const AuthRouter = () => {
   const match = useRouteMatch();

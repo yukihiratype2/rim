@@ -1,7 +1,7 @@
 import * as Yup from 'yup';
 import { Button } from '@material-ui/core';
 import { Form, Formik } from 'formik';
-import { AuthParams } from '../../store/api';
+import { AuthParams } from '../../store/adapter';
 import Input from '../../../../components/common/Input';
 
 type Props = {
