@@ -7,7 +7,7 @@ import { AuthParams } from '../../store/adapter';
 // import { observer } from 'mobx-react-lite';
 // import { authStore } from '../../store';
 
-type Props = {
+export type Props = {
   onLogin: (data: AuthParams) => any
 };
 
@@ -20,7 +20,7 @@ const validationSchema: Yup.SchemaOf<AuthParams> = Yup.object().shape({
 
 const LoginForm = ({ onLogin }: Props) => (
   <Formik initialValues={INITIAL_VALUES} onSubmit={onLogin} validationSchema={validationSchema}>
-    <Form>
+    <Form className="">
       <Input name="username" placeholder="Username" />
       <Input name="password" placeholder="Password" type="password" />
       <Button type="submit">Login</Button>
