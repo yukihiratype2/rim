@@ -9,6 +9,7 @@ module.exports = {
     "@storybook/preset-create-react-app"
   ],
   "typescript": {
-    "check": true
+    "check": true,
+    "reactDocgen": "none"
   }
 }
