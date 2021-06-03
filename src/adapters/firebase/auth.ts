@@ -3,6 +3,7 @@ import {
   getAuth, Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword,
 } from 'firebase/auth';
 import AuthAdapter, { AuthParams } from '../../modules/auth/store/adapter';
+import { firebaseDatabaseStore } from './firebase';
 
 export default class FirebaseAuthStore implements AuthAdapter {
   firebase: FirebaseApp;
@@ -17,6 +18,9 @@ export default class FirebaseAuthStore implements AuthAdapter {
   async login(data: AuthParams) {
     try {
       await signInWithEmailAndPassword(this.auth, data.username, data.password);
+      console.log(this.auth.currentUser);
+      await firebaseDatabaseStore.saveImage(this.auth.currentUser?.uid || 'bala');
+      await firebaseDatabaseStore.getImages(this.auth.currentUser?.uid || 'bala');
       return;
     } catch (error) {
       console.log(error);
