@@ -1,4 +1,6 @@
-import { useMemo, useRef, useState } from 'react';
+import {
+  useEffect, useLayoutEffect, useMemo, useRef, useState,
+} from 'react';
 
 export type Props = {
   colCount: number;
@@ -7,7 +9,7 @@ export type Props = {
 };
 
 const Virtualized = ({ colCount, rowHeight, ...rest }: Props) => {
-  const [scrollPosition, setScrollPosition] = useState(0);
+  // const [scrollPosition, setScrollPosition] = useState(0);
 
   const windowEl = useRef<HTMLDivElement>(null);
 
@@ -17,12 +19,22 @@ const Virtualized = ({ colCount, rowHeight, ...rest }: Props) => {
 
   const itemWidth = useMemo(() => (windowRect?.width || 0) / itemCount, [itemCount, windowRect]);
 
+  useEffect(() => {
+    console.log(itemWidth, windowRect?.height);
+  });
+
   return (
-    <div ref={windowEl} className="bg-blue-300">
+    <div
+      ref={windowEl}
+      className="bg-blue-300 grid"
+      style={{
+        gridTemplateColumns: `repeat(${colCount}, minmax(0, 1fr))`,
+      }}
+    >
       {rest.children.map((child, i) => (
-        <span key={i}>
+        <div key={i} style={{ height: `${itemWidth}px` }}>
           {child}
-        </span>
+        </div>
       ))}
     </div>
   );

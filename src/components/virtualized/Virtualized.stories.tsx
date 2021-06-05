@@ -20,7 +20,7 @@ const Template: Story<TemplateProps> = ({ itemCount, ...props }: TemplateProps) 
   return (
     <Virtualized {...props}>
       {itemArray.map((i) => (
-        <div className="bg-blue-300" key={i}>{i}</div>
+        <span className="bg-blue-300" key={i}>{i}</span>
       ))}
     </Virtualized>
   );
