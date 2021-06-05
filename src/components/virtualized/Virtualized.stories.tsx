@@ -18,9 +18,9 @@ const Template: Story<TemplateProps> = ({ itemCount, ...props }: TemplateProps) 
   const itemArray = useMemo(() => new Array(itemCount).fill(null).map((v, i) => i), [itemCount]);
 
   return (
-    <Virtualized {...props}>
+    <Virtualized {...props} className="w-96 h-96">
       {itemArray.map((i) => (
-        <span className="bg-blue-300" key={i}>{i}</span>
+        <span key={i}>{i}</span>
       ))}
     </Virtualized>
   );
