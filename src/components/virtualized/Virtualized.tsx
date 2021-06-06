@@ -1,6 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable max-len */
-import { debounce } from 'lodash';
 import React, {
   useLayoutEffect, useMemo, useRef, useState, useCallback,
 } from 'react';
