@@ -3,10 +3,13 @@ import Image from './Image';
 
 export type Props = {
   onClick?: React.MouseEventHandler<HTMLElement>,
-  imageAsset: ImageAsset
-};
+  asset: ImageAsset,
+  layout: 'fill' | 'intrinsic'
+} & React.HTMLAttributes<HTMLDivElement>;
 
-const Tile = ({ onClick, imageAsset }: Props) => (
-  <Image src={imageAsset.name} onClick={onClick} />
+const Tile = ({ asset, layout = 'fill', ...rest }: Props) => (
+  <div className={rest.className}>
+    <Image src={asset.src} onClick={rest.onClick} />
+  </div>
 );
 export default Tile;

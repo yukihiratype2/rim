@@ -5,8 +5,11 @@ export default class Asset {
 
   id: string;
 
+  src: string;
+
   constructor(asset: AssetRaw) {
     this.name = asset.name;
     this.id = asset.id;
+    this.src = asset.src;
   }
 }
