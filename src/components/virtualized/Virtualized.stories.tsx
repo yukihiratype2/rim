@@ -30,5 +30,5 @@ export const Default = Template.bind({});
 
 Default.args = {
   colCount: 3,
-  itemCount: 10,
+  itemCount: 100,
 };
