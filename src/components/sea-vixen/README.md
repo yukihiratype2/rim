@@ -1,0 +1,1 @@
+Sea Vixen is a image viewer optimized for very large images.
