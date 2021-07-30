@@ -7,7 +7,7 @@ const Toolbar = observer(() => {
   const uiState = useContext(UIStateContext);
   return (
     <div className="w-full">
-      <Button data-testid="toggleFolderVisible" onClick={uiState.toggleFolderVisible}>Toggle Folder</Button>
+      <Button data-testid="toggleFolderVisible" onClick={() => uiState.toggleFolderVisible()}>Toggle Folder</Button>
     </div>
   );
 });

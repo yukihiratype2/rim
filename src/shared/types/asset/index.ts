@@ -3,3 +3,8 @@ export type AssetRaw = {
   id: string;
   src: string;
 };
+
+export enum AssetCategory {
+  Inbox = 'INBOX',
+  Trash = 'TRASH',
+}
