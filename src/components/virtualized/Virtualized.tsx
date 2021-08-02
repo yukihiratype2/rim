@@ -24,6 +24,11 @@ const Virtualized = ({ colCount, ...rest }: Props) => {
     return rowsInWindow * colCount;
   }, [colCount, itemHeight]);
 
+  const listItems = useMemo(() => rest.children.map((child, i) => ({
+    child,
+    i,
+  })), []);
+
   const rowStackHeight = useMemo(() => {
     const rowCount = Math.ceil(rest.children.length / colCount);
     return rowCount * itemHeight;
@@ -39,11 +44,7 @@ const Virtualized = ({ colCount, ...rest }: Props) => {
   useLayoutEffect(() => {
     const windowRect = windowEl.current?.getBoundingClientRect();
 
-    const itemCount = (rest.children || []).length;
-
     setItemHeight((windowRect?.width || 0) / colCount);
-
-    console.log(windowEl.current?.getBoundingClientRect().width, itemCount);
   }, [colCount, rest.children]);
 
   return (
@@ -65,7 +66,7 @@ const Virtualized = ({ colCount, ...rest }: Props) => {
           height: rowStackHeight - scrolledRowHeight,
         }}
       >
-        {rest.children.slice(scrolledItemCount, scrolledItemCount + itemsInWindow).map((child, i) => (
+        {listItems.slice(scrolledItemCount, scrolledItemCount + itemsInWindow).map(({ child, i }) => (
           <div
             key={i}
             style={{
